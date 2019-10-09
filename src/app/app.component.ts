@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 @Component({
   selector: 'my-app',
@@ -30,6 +31,10 @@ export class AppComponent  {
   public plums = ['Plum 1', 'Plum 2'];
   public plumStream = of(...this.plums);
 
+  // OBSERVE EVENTS WITH fromEvent() Observable creation function
+    // Create an observable with click event on the screen
+  observable = fromEvent(window, 'click');
+
   constructor() {
 
     // subscribe to appleStream observable
@@ -46,6 +51,10 @@ export class AppComponent  {
 
     // subscribe to plumStream Observable
     this.plumStream.subscribe((val) => console.log(val));
+
+    // Subscribe to the click event on paragraph observable
+    let count = 0;
+    this.observable.subscribe(() => console.log(`Hey! You clicked the window ${++count} times`));
   }
 }
 
