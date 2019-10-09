@@ -23,6 +23,13 @@ export class AppComponent  {
   // build an observable from any data structure using the from() Observable creation function
   public bananaStream = from(['Banana 1', 'Banana 2']);
 
+  // pass an array to the of() function emits the entire array as a single item
+  public bananaStream2 = of(['Banana 1', 'Banana 2']);
+
+  // making the of() function behave like from() with the spread operator
+  public plums = ['Plum 1', 'Plum 2'];
+  public plumStream = of(...this.plums);
+
   constructor() {
 
     // subscribe to appleStream observable
@@ -33,5 +40,13 @@ export class AppComponent  {
 
     // subscribe to bananaStream Observable
     this.bananaStream.subscribe((val) => console.log(val));
+
+    // subscribe to bananaStream2 Observable
+    this.bananaStream2.subscribe((val) => console.log(val));
+
+    // subscribe to plumStream Observable
+    this.plumStream.subscribe((val) => console.log(val));
   }
 }
+
+// conclusion: the from(X) and the of(...X) creation functions are equivalent
