@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { from } from 'rxjs/observable/from';
 import { fromEvent } from 'rxjs/observable/fromEvent';
+import { interval } from 'rxjs/observable/interval';
 
 @Component({
   selector: 'my-app',
@@ -34,6 +35,9 @@ export class AppComponent  {
   // OBSERVE EVENTS WITH fromEvent() Observable creation function
     // Create an observable with click event on the screen
   observable = fromEvent(window, 'click');
+
+  // INTERVAL CREATION FUNCTION
+  num = interval(1000).subscribe(console.log);
 
   constructor() {
 
