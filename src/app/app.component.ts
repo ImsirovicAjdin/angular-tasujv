@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {Observable} from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { from } from 'rxjs/observable/from';
 
 @Component({
   selector: 'my-app',
@@ -19,6 +20,9 @@ export class AppComponent  {
   // build an observable the accepted way
   public orangeStream = of('Orange 1', 'Orange 2');
 
+  // build an observable from any data structure using the from() Observable creation function
+  public bananaStream = from(['Banana 1', 'Banana 2']);
+
   constructor() {
 
     // subscribe to appleStream observable
@@ -26,5 +30,8 @@ export class AppComponent  {
 
     // subscribe to orangeStream Observable
     this.orangeStream.subscribe((val) => console.log(val));
+
+    // subscribe to bananaStream Observable
+    this.bananaStream.subscribe((val) => console.log(val));
   }
 }
